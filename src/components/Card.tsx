@@ -12,7 +12,7 @@ export default function CardElement(props : iCard) {
             <div className="text-lg font-bold text-white py-2 pt-6 px-10">
                 Complete Course
             </div>
-            <div className="bg-[#00FFF2] px-4 w-fit rounded font-extrabold mx-auto text-2xl">
+            <div className="bg-[#00FFF2] px-4 w-full rounded font-extrabold mx-auto text-2xl">
                 {props.title}
             </div>
             <div className="mt-4 font-bold text-white text-lg">
