@@ -1,7 +1,14 @@
 import { useNavigate } from "react-router-dom"
-
+import Cookies from "js-cookie";
+import { useState } from "react";
 export default function NavBar() {
    
+    const [loggedIn , setloggedIn] = useState(false);
+
+    console.log(Cookies.get('token'))
+    if(Cookies.get('token')) {
+        setloggedIn(true)
+    }
     const navigate = useNavigate();
 
     return <div className="relative text-white bg-[#1D1E30] flex justify-between px-20 py-4 items-center font-[Jockey One] z-[999]">
