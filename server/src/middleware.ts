@@ -3,17 +3,22 @@ import jwt from 'jsonwebtoken';
 import { secret } from "./config";
 
 export function authMiddleware(req : Request , res : Response , next : NextFunction) {
-    const token = req.cookies.token;
+    const token = req.headers['authorization']
 
-    const decoded = jwt.verify(token , secret)
-    if(decoded) {
-        //@ts-ignore
-        req.userId = decoded._id;
-        next();
+    if(token) {
+        const decoded = jwt.verify(token , secret)
+        if(decoded) {
+            //@ts-ignore
+            req.userId = decoded._id;
+            next();
+        } else {
+            res.json({
+                message : "something went wrong"
+            })
+        }
     } else {
         res.json({
-            message : "something went wrong"
+            message : 'no token provided'
         })
     }
-    next();
 }

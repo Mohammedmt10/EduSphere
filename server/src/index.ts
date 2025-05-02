@@ -5,9 +5,9 @@ import bcrypt, { hash } from 'bcrypt';
 import cors from 'cors'
 import jwt from 'jsonwebtoken';
 import { secret } from './config';
-import cookieParser from 'cookie-parser';
+import cookieParser, { signedCookie } from 'cookie-parser';
 import { authMiddleware } from './middleware';
-import Cookies from 'js-cookie';
+
 
 const app = express();
 
@@ -71,16 +71,14 @@ app.post('/signin' , async (req , res , next) => {
         const user = await userModel.findOne({
             username : userData.username
         })
-        console.log('hi there')
         if(user?.password) {
             const passwordVerification = await bcrypt.compare(userData.password , user.password);
             if(passwordVerification) {
                 const token = jwt.sign({
                     _id : user._id
-                } , secret , {expiresIn : '24hr'})
-                res.cookie('token', token)
-                res.json({
-                    message : "signed in"
+                } , secret , {expiresIn : '24hr'});
+                res.json({  
+                    token : token
                 })
             } else {
                 res.json({
@@ -99,17 +97,15 @@ app.post('/signin' , async (req , res , next) => {
     }
 })
 
-app.get('/logout' , authMiddleware, (req , res , next) => {
-    res.cookie('token' , null);
-    res.json({
-        message : 'logged out'
-    })
-})
+app.get('/me' , authMiddleware , async (req , res ) => {
+    //@ts-ignore
+    const userId = req.userId;
 
-app.post('/test' , authMiddleware , (req , res , next) => {
-    res.json({
-        message : 'can use'
+    const user = await userModel.findOne({
+        _id : userId
     })
+
+    res.json({user})
 })
 
 app.listen(3000);

@@ -5,10 +5,12 @@ import NavBar from "./NavBar";
 
 export default function LandingPage() {
     return  <div className="bg-[#1E1E1E] min-h-screen">
-    <NavBar />
-    <Hero />
-    <Courses />
-    <Footer />
+    <div>
+      <NavBar />
+      <Hero />
+      <Courses />
+      <Footer />
+    </div>
   </div>
 
 }
