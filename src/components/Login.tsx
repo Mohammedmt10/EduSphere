@@ -3,7 +3,7 @@ import CloseIcon from "../icons/Close";
 import axios from "axios";
 import { FormEvent, useState } from "react";
 
-export default function LogInPage(props: any) {
+export default function LogInPage() {
     
     const [success , setSuccess] = useState(false)
 

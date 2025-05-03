@@ -4,6 +4,7 @@ import LogInPage from "./components/Login"
 import SignIn from "./components/SignIn"
 import Webdev from "./components/Webdev"
 import Devops from "./components/Devops"
+import PurchasedCourses from "./components/CoursesPage"
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
         <Route path="/signup" element={<SignIn />} />
         <Route path="/webdevcourse" element={<Webdev />} />
         <Route path="/devopscourse" element={<Devops />} />
+        <Route path="/courses" element={<PurchasedCourses />} />
       </Routes>
     </BrowserRouter>
   </div>

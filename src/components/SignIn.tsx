@@ -1,11 +1,34 @@
 import { useNavigate } from "react-router-dom";
 import CloseIcon from "../icons/Close";
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
+import axios from "axios";
 
 export default function SignIn() {
 
+    const [success , setSuccess] = useState(true)
+
     const submitHandler = async (event : FormEvent<HTMLFormElement>) => {
-        console.log(event.currentTarget)
+        event.preventDefault();
+        const form = event.currentTarget;
+
+        const formData = new FormData(form);
+
+        const username = formData.get('username');
+        const password = formData.get('password');
+
+        const response = await axios.post('http://localhost:3000/signup', {
+            username : username,
+            password : password
+        });
+
+        if(response.data.message == 'new user created') {
+            navigate('/login')
+        } else if(response.data.error == 'password') {
+            alert('Password must contain : \n 1:Min one character \n 2: minimum one number \n 3: minimum one Capital alphabet');
+            setSuccess(false);
+        } else {
+            setSuccess(false);
+        }
     }
 
     const navigate = useNavigate();
@@ -25,12 +48,15 @@ export default function SignIn() {
                     <div className="text-white text-xl text-start mt-15">
                         <div>
                             Username: <br />
-                            <input type="text" className="bg-white text-black outline-none px-2 py-1 rounded mt-1" />
+                            <input type="text" className="bg-white text-black outline-none px-2 py-1 rounded mt-1" name="username" />
                         </div>
                         <div className="mt-3">
                             Password: <br />
-                            <input type="password" className="bg-white text-black outline-none px-2 py-1 rounded mt-1" />
+                            <input type="password" className="bg-white text-black outline-none px-2 py-1 rounded mt-1" name="password" />
                         </div>
+                        {!success && <div className="text-red-600 text-base text-center mt-2">
+                                incorrect credentails
+                            </div>}
                         <button className="text-white bg-[#383B52] w-full mt-3 rounded py-1 cursor-pointer" type="submit">
                             Sign Up
                         </button>
