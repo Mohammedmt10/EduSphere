@@ -1,13 +1,17 @@
+import mongoose from "mongoose"
+
 interface iCard {
     title : String,
     price : number
-    imageAddress : Object | String | ImageData
+    imageUrl : Object | String | ImageData,
+    description : string,
+    userId : mongoose.Types.ObjectId
 }
 
 export default function CardElement(props : iCard) {
     return <div className="w-100 rounded-lg overflow-clip cursor-pointer">
         <div className="flex bg-blend-multiply bg-radial from-[#4C2795] to-[#180C2F] w-full">
-        <img src={`${props.imageAddress}`} className="w-30 h-40" />
+        <img src={`${props.imageUrl}`} className="w-30 h-40" />
         <div className="text-center mx-auto">
             <div className="text-lg font-bold text-white py-2 pt-6 px-10">
                 Complete Course

@@ -1,20 +1,42 @@
 import CardElement from "./Card";
-import MohammedPhoto from "../photos/MohammedPhoto.png"
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import mongoose from "mongoose";
+
+
+interface course {
+    _id : mongoose.Types.ObjectId,
+    title : string,
+    price : number,
+    imageUrl : string,
+    description : string,
+    userId : mongoose.Types.ObjectId
+}
 
 export default function Courses() {
+    const [courses , setCourses] = useState([])
+    const Courses = async () => {
+        const response = await axios.get('http://localhost:3000/courses');
+        setCourses(response.data.courses);
+        console.log(response.data)
+    }
+    useEffect(()=>{
+        Courses();
+    },[]);
     const navigate = useNavigate();
     return <div className="h-full mt-10">
         <div className="text-6xl font-bold text-white text-center">
             Courses
         </div>
         <div className="w-fit mx-auto p-10 flex gap-10">
-            <div onClick={() => navigate('/webdevcourse')}>
-                <CardElement title={"Web Development"} price={999} imageAddress={MohammedPhoto} />
-            </div>
-            <div onClick={() => navigate('/devopscourse')}>
-                <CardElement title={"Devops"} price={999} imageAddress={MohammedPhoto} />
-            </div>
+            {courses.map((course : course) => (
+                <div onClick={()=>{
+                    navigate(`/course/${course._id}`)
+                }}>
+                    <CardElement title={course.title} price={course.price} description={course.description} userId={course.userId} imageUrl={course.imageUrl}  />
+                </div>
+            ))}
         </div>
     </div>
 }

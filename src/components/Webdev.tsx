@@ -1,20 +1,60 @@
+import axios from "axios";
+import mongoose from "mongoose";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom"
+
+interface course {
+    _id : mongoose.Types.ObjectId,
+    title : string,
+    price : number,
+    imageUrl : string,
+    description : string,
+    userId : mongoose.Types.ObjectId
+}
+
 export default function Webdev() {
+    const { id } = useParams();
+    const [course , setCourse] = useState<Partial<course>>({});
+
+    const purchasedCourse = async () => {
+        const response = await axios.post('http://localhost:3000/buy',{
+            courseId : id
+        },{
+            headers : {
+                Authorization : localStorage.getItem('token')
+            }
+        });
+
+        if(response.data.message == "purchased") {
+            alert('Course is purchased');
+        } else if(response.data.message == "already purchased") {
+            alert('Course is already purchased');
+        } else {
+            alert('something went wrong')
+        }
+
+    }
+
+    const courseDetails = async () => {
+        const response = await axios.get(`http://localhost:3000/course/${id}`);
+        const data = response.data.response ;
+        if(data) {
+            setCourse(data);
+        } else {
+            alert('incorrrect course id');
+        }
+    
+    }
+    useEffect(()=>{   
+        courseDetails();
+    },[]);
     return <div className="bg-[#1D1E30] min-h-screen flex">
         <div className="border-r-2 w-full min-h-screen border-[#383B52]">
-            <img src="src\photos\Webdev_image.png" className="pt-20 px-30 w-4xl" />
+            <img src={course.imageUrl} className="pt-20 px-30 w-4xl" />
             <div className=" px-30 pb-10">
                 <h1 className="text-white text-2xl font-bold tracking-wider py-10">Overview :</h1>
                 <div className="text-white">
-                    This Course Consist full MERN Stack and DEVOPS for just a small price of Rs. 999. <br /><br />
-                    This includes : <br /><br />
-                    HTML<br />
-                    CSS<br />
-                    Basic JS<br />
-                    DOM<br />
-                    MongoDB<br />
-                    Epress<br />
-                    Ract.js<br />
-                    Next.js<br />
+                    {course.description}
                 </div>
             </div>
         </div>
@@ -27,7 +67,7 @@ export default function Webdev() {
                     Price
                 </div>
                 <div>
-                    999
+                    {course.price}
                 </div>
             </div>
             <div className="justify-between py-3 flex px-10 w-80">
@@ -43,10 +83,12 @@ export default function Webdev() {
                     Total
                 </div>
                 <div>
-                    999
+                    {course.price}
                 </div>
             </div>
-            <div className="mx-10 text-center bg-[#383B52] py-2 text-2xl font-bold cursor-pointer rounded mt-20">
+            <div className="mx-10 text-center bg-[#383B52] py-2 text-2xl font-bold cursor-pointer rounded mt-20" onClick={()=> {
+                purchasedCourse();
+            }}>
                 Buy
             </div>
         </div>

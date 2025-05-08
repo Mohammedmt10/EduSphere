@@ -28,7 +28,6 @@ export default function NavBar() {
     
     }
     userInfo();
-    console.log(loggedIn)
     return <div className="relative text-white bg-[#1D1E30] flex justify-between px-20 py-4 items-center font-[Jockey One] z-[999]">
         <div className="text-3xl font-semibold tracking-wider">
             Edusphere

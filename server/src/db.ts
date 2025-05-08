@@ -17,12 +17,12 @@ const courseSchema = new mongoose.Schema({
     description : String,
     price : Number,
     imageUrl : String,
-    userId : {type : mongoose.Types.ObjectId , keyof : adminSchema}
+    userId : {type : mongoose.Types.ObjectId , ref : 'admin' }
 });
 
 const purchasedCourseSchema = new mongoose.Schema({
-    userId :{ type : mongoose.Types.ObjectId , keyof : userSchema},
-    courseId : {type : mongoose.Types.ObjectId , keyof : courseSchema}
+    userId :{ type : mongoose.Types.ObjectId , ref : 'users' },
+    courseId : {type : mongoose.Types.ObjectId , ref : 'courses'}
 })
 
 export const userModel = mongoose.model('users' , userSchema);

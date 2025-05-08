@@ -239,12 +239,41 @@ app.post('/createCourse' , authMiddleware , async (req , res) => {
         })
     }
 
+});
+
+app.get('/purchasedCourses' , authMiddleware , async (req , res) => {
+    //@ts-ignore
+    const userId = req.userId;
+
+    const response = await purchasedCourseModel.find({
+        userId : userId
+    }).populate([{
+        path : 'courseId'
+    }, {
+        path : 'userId'
+    }])
+
+    if(response == null) {
+        res.json({
+            message : 'no course purchased'
+        })
+    }
+
+    res.json({
+        message : response
+    })
 })
 
 app.post('/buy' , authMiddleware , async (req , res ) => {
    //@ts-ignore
     const userId = req.userId;
-    const courseId = req.body;
+    const courseId = req.body.courseId;
+
+    if(!userId) {
+        res.json({
+            message : 'user is not logged in'
+        })
+    }
 
     const response = await purchasedCourseModel.findOne({
         userId : userId,
@@ -267,6 +296,26 @@ app.post('/buy' , authMiddleware , async (req , res ) => {
             message : "purchased"
         })
     }
+})
+
+app.get('/courses' , async (req , res) => {
+    const courses = await courseModel.find({}).populate('userId');
+
+    res.json({
+        courses : courses
+    })
+})
+
+app.get('/course/:id', async (req , res) => {
+    const courseId = req.params['id'];
+
+    const response = await courseModel.findOne({
+        _id : courseId
+    })
+    
+    res.json({
+        response
+    })
 })
 
 app.listen(3000);
