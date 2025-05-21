@@ -334,6 +334,38 @@ app.get('/course/:id', async (req , res) => {
     })
 });
 
+app.post('/addLecture', async (req , res) => {
+    const requiredBody = z.object({
+        title : z.string(),
+        videoUrl : z.string()
+    });
+
+    const safeParsed = requiredBody.safeParse(req.body);
+
+    const data = safeParsed.data
+
+    if(safeParsed.success) {
+        try{
+            const response = await lectureModel.create({
+                title : data?.title,
+                videoUrl : data?.videoUrl
+            });
+            if(response) {
+                res.json({
+                    message : 'course has been created'
+                })
+            } else {
+                res.json({
+                    message : "course not created"
+                })
+            }
+        } catch(e) {
+            res.json({message : 'some error ocured'})
+        }
+
+    }
+})
+
 app.get('/getLectures/:id', authMiddleware , async (req , res) => {
     
     const lectureId = req.params.id;
