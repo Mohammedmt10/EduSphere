@@ -33,9 +33,11 @@ export default function NavBar() {
             Edusphere
         </div>
         <div className="flex items-center">
-            <div className="font-semibold px-4 cursor-pointer">Home</div>
             <div className="font-semibold px-4 cursor-pointer" onClick={() => {
-                navigate('/courses')
+                navigate('/')
+            }}>Home</div>
+            <div className="font-semibold px-4 cursor-pointer" onClick={() => {
+                navigate('/purchasedCourses')
             }}>Courses</div>
             <div className="font-semibold px-4 cursor-pointer">Tests</div>
             {!loggedIn && <div className="font-semibold px-6 py-2 bg-[#383B52] shadow-md shadow-black rounded-full border-2 border-[#383B52] hover:bg-[#1D1E30] cursor-pointer" onClick={() => navigate('/login')}>Login</div>}

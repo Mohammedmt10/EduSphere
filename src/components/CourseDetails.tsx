@@ -12,7 +12,7 @@ interface course {
     userId : mongoose.Types.ObjectId
 }
 
-export default function Webdev() {
+export default function CourseDetails() {
     const { id } = useParams();
     const [course , setCourse] = useState<Partial<course>>({});
 

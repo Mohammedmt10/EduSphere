@@ -1,13 +1,47 @@
-import mongoose from "mongoose";
+import mongoose, { Types } from "mongoose";
+import dotenv from "dotenv";
 
-mongoose.connect('mongodb+srv://Mohammed:pwkDigPkYJVNLMN9@cluster0.of4gc.mongodb.net/Edusphere');
+dotenv.config();
 
-const userSchema = new mongoose.Schema({
-    username : {type : String , unique : true , require : true},
-    password : {type : String ,  require : true}
+  mongoose.connect(process.env.MONGO_URL||'')
+
+ interface IUser {
+  username: string;
+  password: string;
+}
+
+ interface IAdmin extends Document {
+  username: string;
+  password: string;
+}
+
+ interface ICourse extends Document {
+  title: string;
+  description: string;
+  price: number;
+  imageUrl: string;
+  userId: mongoose.Types.ObjectId;
+}
+
+ interface IPurchasedCourse extends Document {
+  userId: Types.ObjectId;
+  courseId: Types.ObjectId;
+}
+
+ interface ILecture extends Document {
+  courseId: Types.ObjectId;
+  title: string;
+  date: Date;
+  duration: string;
+}
+
+
+const userSchema = new mongoose.Schema<IUser>({
+    username : {type : String , unique : true , required : true},
+    password : {type : String , required : true}
 })
 
-const adminSchema = new mongoose.Schema({
+const adminSchema = new mongoose.Schema<IAdmin>({
     username : {type : String , unique : true , require : true},
     password : {type : String ,  require : true}
 })
@@ -23,9 +57,15 @@ const courseSchema = new mongoose.Schema({
 const purchasedCourseSchema = new mongoose.Schema({
     userId :{ type : mongoose.Types.ObjectId , ref : 'users' },
     courseId : {type : mongoose.Types.ObjectId , ref : 'courses'}
+});
+
+const lectureSchema = new mongoose.Schema({
+    title : String,
+    videoUrl : String
 })
 
-export const userModel = mongoose.model('users' , userSchema);
-export const adminModel = mongoose.model('admin' , adminSchema)
-export const courseModel = mongoose.model('courses' , courseSchema);
+export const lectureModel = mongoose.model('lecture' , lectureSchema);
+export const userModel = mongoose.model<IUser>('users' , userSchema);
+export const adminModel = mongoose.model<IAdmin>('admin' , adminSchema)
+export const courseModel = mongoose.model<ICourse>('courses' , courseSchema);
 export const purchasedCourseModel = mongoose.model('purchasedCourse' , purchasedCourseSchema)

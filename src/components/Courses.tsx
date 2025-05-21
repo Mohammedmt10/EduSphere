@@ -19,7 +19,6 @@ export default function Courses() {
     const Courses = async () => {
         const response = await axios.get('http://localhost:3000/courses');
         setCourses(response.data.courses);
-        console.log(response.data)
     }
     useEffect(()=>{
         Courses();
@@ -34,7 +33,7 @@ export default function Courses() {
                 <div onClick={()=>{
                     navigate(`/course/${course._id}`)
                 }}>
-                    <CardElement title={course.title} price={course.price} description={course.description} userId={course.userId} imageUrl={course.imageUrl}  />
+                    <CardElement title={course.title} price={course.price} description={course.description} buttonText="Buy" imageUrl={course.imageUrl}  />
                 </div>
             ))}
         </div>

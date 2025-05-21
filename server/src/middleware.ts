@@ -2,10 +2,9 @@ import { NextFunction, Request, Response } from "express";
 import jwt from 'jsonwebtoken';
 import { secret } from "./config";
 
-export function authMiddleware(req : Request , res : Response , next : NextFunction) {
+export async function authMiddleware(req : Request , res : Response , next : NextFunction) {
     const token = req.headers['authorization']
-
-    if(token) {
+    if(token != null) {
         const decoded = jwt.verify(token , secret)
         if(decoded) {
             //@ts-ignore

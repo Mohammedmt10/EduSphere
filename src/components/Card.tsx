@@ -1,11 +1,9 @@
-import mongoose from "mongoose"
-
 interface iCard {
     title : String,
     price : number
     imageUrl : Object | String | ImageData,
     description : string,
-    userId : mongoose.Types.ObjectId
+    buttonText : string
 }
 
 export default function CardElement(props : iCard) {
@@ -25,7 +23,7 @@ export default function CardElement(props : iCard) {
         </div>
     </div>
         <div className="bg-[#383B52] w-full text-center text-white font-bold text-lg py-2">
-            Buy
+            {props.buttonText}
         </div>
     </div>
 }
