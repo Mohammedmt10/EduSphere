@@ -3,7 +3,7 @@ import NavBar from "./NavBar";
 import Github from '../icons/GitHub';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface lec {
   title : string,
@@ -14,24 +14,22 @@ export default function LecturePlayer() {
   const { id } = useParams();
   const [lecDetails , setLecDetails] = useState<Partial<lec>>({});
   const getData = async () => {
-    const response = await axios.get(`http://localhost:3000/getLectures/${id}`,{
+    const response = await axios.get(`http://localhost:3000/lecture/${id}`,{
       headers : {
         Authorization : localStorage.getItem('token')
       }
     });
-    setLecDetails(response.data)
+    console.log(response.data.lecture)
+    setLecDetails(response.data.lecture)
   }
-  getData();
+  useEffect(()=> {
+    getData();
+  } , [])
   return (
     <div className="bg-[#16171B] h-full pb-10">
       <NavBar />
       <div className="relative aspect-video mx-30 mt-10 rounded-2xl overflow-clip">
-        <ReactPlayer
-          url={lecDetails.videoUrl}
-          controls={true}
-          width={1200}
-          height={600}
-        />
+        <iframe width="914" height="514" src={lecDetails.videoUrl} allowFullScreen></iframe>
         <div className='text-white text-3xl tracking-tight py-4 font-semibold'>
             {lecDetails.title}
         </div>

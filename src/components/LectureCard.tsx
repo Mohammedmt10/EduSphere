@@ -1,14 +1,18 @@
-import Clock from "../icons/clock"
+import { useNavigate } from "react-router-dom"
 import PlayIcon from "../icons/play"
+import { ObjectId } from "mongoose";
 
 interface LectureCardIf {
     title : string,
-    duration : string,
-    date : string
+    date : string,
+    lectureId : ObjectId
 }
 
 export default function LectureCard(props : LectureCardIf) {
-    return <div className="bg-[#383B52] flex items-center mx-20 mt-5 rounded text-white">
+    const navigate = useNavigate();
+    return <div className="bg-[#383B52] flex items-center mx-20 mt-5 rounded text-white hover:cursor-pointer" onClick={() => {
+        navigate(`/lecture/${props.lectureId}`)
+    }}>
         <div className=" px-10">
             <PlayIcon />
         </div>
@@ -16,9 +20,6 @@ export default function LectureCard(props : LectureCardIf) {
             Title : {props.title} <br />
             <div className="font-normal">
                 Created On : {props.date} <br />
-            </div>
-            <div className="text-md font-light flex items-center gap-2">
-                <Clock />{props.duration}
             </div>
         </div>
     </div>

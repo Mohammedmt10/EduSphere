@@ -8,12 +8,82 @@ import { secret } from './config';
 import { authMiddleware } from './middleware';
 import dotenv from "dotenv";
 import { lectureModel } from './db';
+import axios from 'axios';
 
 const app = express();
 
 dotenv.config();
 app.use(cors());
 app.use(express.json());
+
+app.post('/test' , async (req , res) => {
+    
+    const code = req.body.code;
+    const sendCode = `function output() {
+        ${code}
+    }
+    output();    
+    `
+
+const options = {
+  method: 'POST',
+  url: 'https://judge0-ce.p.rapidapi.com/submissions',
+  params: {
+    base64_encoded: 'true',
+    wait: 'false',
+    fields: '*'
+  },
+  headers: {
+    'x-rapidapi-key': 'f811e3ef1cmshbb7db1e85e1468ap14c5e1jsnd83ddcd6c803',
+    'x-rapidapi-host': 'judge0-ce.p.rapidapi.com',
+    'Content-Type': 'application/json'
+  },
+  data: JSON.stringify({
+    language_id: 93,
+    source_code: btoa(sendCode),
+    //stdin: 'SnVkZ2Uw'
+  })
+};
+
+	try {
+		const response = await axios.request(options);
+		const data = response.data.token;
+
+        res.json({
+            token : data
+        })
+
+	} catch (error) {
+		console.error(error);
+	}
+});
+
+app.get('/getOutput' , async (req , res) => {
+    const token = req.headers['authorization'];
+    const url = `https://judge0-ce.p.rapidapi.com/submissions/${token}?base64_encoded=true&fields=*`;
+const options = {
+	method: 'GET',
+	headers: {
+		'x-rapidapi-key': 'f811e3ef1cmshbb7db1e85e1468ap14c5e1jsnd83ddcd6c803',
+		'x-rapidapi-host': 'judge0-ce.p.rapidapi.com'
+	}
+};
+
+try {
+	const response = await fetch(url, options);
+	const result = await response.json();
+    console.log(result.output)
+    const output = atob(result.output)
+    res.json({
+        output
+    })
+} catch (error) {
+	console.error({error});
+    res.json({
+        error
+    })
+}
+})
 
 app.post('/signup' , async (req , res , next) => {
     const body = z.object({
@@ -334,11 +404,13 @@ app.get('/course/:id', async (req , res) => {
     })
 });
 
-app.post('/addLecture', async (req , res) => {
+app.post('/addLecture/:id', async (req , res) => {
     const requiredBody = z.object({
         title : z.string(),
         videoUrl : z.string()
     });
+
+    const courseId = req.params['id']
 
     const safeParsed = requiredBody.safeParse(req.body);
 
@@ -348,15 +420,16 @@ app.post('/addLecture', async (req , res) => {
         try{
             const response = await lectureModel.create({
                 title : data?.title,
-                videoUrl : data?.videoUrl
+                videoUrl : data?.videoUrl,
+                courseId : courseId
             });
             if(response) {
                 res.json({
-                    message : 'course has been created'
+                    message : 'lecture has been created'
                 })
             } else {
                 res.json({
-                    message : "course not created"
+                    message : "lecture not created"
                 })
             }
         } catch(e) {
@@ -368,15 +441,31 @@ app.post('/addLecture', async (req , res) => {
 
 app.get('/getLectures/:id', authMiddleware , async (req , res) => {
     
-    const lectureId = req.params.id;
+    const courseId = req.params['id'];
 
-    const lecture = lectureModel.findOne({
-        _id : lectureId
+    const lectures = await lectureModel.find({
+        courseId : courseId
     });
 
-    res.json({
-        lecture : lecture
+    if(lectures) {
+            res.json({
+            lecture : lectures
+        })
+    }
+})
+
+app.get('/lecture/:id' , authMiddleware , async (req , res) => {
+    const lectureId = req.params['id'];
+
+    const lecture = await lectureModel.findOne({
+        _id : lectureId
     })
+
+    if(!lecture) res.json({message : 'invalid lecturecode'})
+
+    res.json({
+        lecture
+    });
 })
 
 app.listen(3000);

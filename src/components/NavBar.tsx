@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Profile from "../icons/profile";
 import CloseIcon from "../icons/Close";
@@ -27,7 +27,9 @@ export default function NavBar() {
     }
     
     }
-    userInfo();
+    useEffect(() => {
+        userInfo();
+    },[])
     return <div className="relative text-white bg-[#1D1E30] flex justify-between px-20 py-4 items-center font-[Jockey One] z-[999]">
         <div className="text-3xl font-semibold tracking-wider">
             Edusphere
@@ -39,7 +41,9 @@ export default function NavBar() {
             <div className="font-semibold px-4 cursor-pointer" onClick={() => {
                 navigate('/purchasedCourses')
             }}>Courses</div>
-            <div className="font-semibold px-4 cursor-pointer">Tests</div>
+            <div className="font-semibold px-4 cursor-pointer" onClick={() => {
+                navigate('/test')
+            }}>Tests</div>
             {!loggedIn && <div className="font-semibold px-6 py-2 bg-[#383B52] shadow-md shadow-black rounded-full border-2 border-[#383B52] hover:bg-[#1D1E30] cursor-pointer" onClick={() => navigate('/login')}>Login</div>}
             {loggedIn && <div className="mx-3 ml-2 cursor-pointer" onClick={() => setprofileOpen(true)}>
                 <Profile />

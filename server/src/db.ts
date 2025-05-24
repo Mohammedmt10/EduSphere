@@ -1,6 +1,5 @@
 import mongoose, { Types } from "mongoose";
 import dotenv from "dotenv";
-
 dotenv.config();
 
   mongoose.connect(process.env.MONGO_URL||'')
@@ -61,7 +60,10 @@ const purchasedCourseSchema = new mongoose.Schema({
 
 const lectureSchema = new mongoose.Schema({
     title : String,
-    videoUrl : String
+    videoUrl : String,
+    courseId : {type : mongoose.Types.ObjectId , ref : 'courses'}
+} , {
+  timestamps : true
 })
 
 export const lectureModel = mongoose.model('lecture' , lectureSchema);

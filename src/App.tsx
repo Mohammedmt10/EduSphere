@@ -6,6 +6,7 @@ import PurchasedCourses from "./components/purchasedCourses"
 import CourseDetails from "./components/CourseDetails"
 import CourseContent from "./components/CourseContent"
 import LecturePlayer from "./components/LecturePlayer"
+import TestPage from "./components/Test"
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/purchasedCourses" element={<PurchasedCourses />} />
         <Route path="/content/:id" element={<CourseContent />} />
         <Route path="/lecture/:id" element={<LecturePlayer />} />
+        <Route path="/test" element={<TestPage />} />
       </Routes>
     </BrowserRouter>
   </div>
