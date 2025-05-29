@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CardElement from './Card';
 import axios from 'axios';
-import PlusIcon from '../icons/plusIcon';
 import mongoose from 'mongoose';
 import AdminNavBar from './AdminNavBar';
 

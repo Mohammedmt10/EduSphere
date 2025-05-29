@@ -1,4 +1,3 @@
-import ReactPlayer from 'react-player';
 import NavBar from "./NavBar";
 import Github from '../icons/GitHub';
 import { useParams } from 'react-router-dom';

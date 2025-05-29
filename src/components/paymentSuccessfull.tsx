@@ -15,7 +15,10 @@ export default function PaymentSuccessfull() {
                 headers : {
                     Authorization : localStorage.getItem('token')
                 }
-            })
+            });
+            if(buy.data.message == "purchased") {
+                
+            }
         }
     }
 

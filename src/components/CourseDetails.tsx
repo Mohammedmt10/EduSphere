@@ -15,7 +15,6 @@ interface course {
 export default function CourseDetails() {
     const { id } = useParams();
     const [course , setCourse] = useState<Partial<course>>({});
-    let status = 'pending'
 
     const purchasedCourse = async () => {
         
