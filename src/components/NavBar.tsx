@@ -3,11 +3,13 @@ import axios from "axios";
 import Profile from "../icons/profile";
 import CloseIcon from "../icons/Close";
 import { useNavigate } from "react-router-dom";
+import {motion} from 'framer-motion';
 
 export default function NavBar() {
     const [loggedIn , setloggedIn] = useState(false);
     const [profileOpen , setprofileOpen] = useState(false);
     const [username , setUsername] = useState('');
+    const [hover , setHover] = useState('');
     const navigate = useNavigate();
     const logoutCall = async () => {
         localStorage.removeItem('token')
@@ -30,21 +32,41 @@ export default function NavBar() {
     useEffect(() => {
         userInfo();
     },[])
-    return <div className="relative text-white bg-[#1D1E30] flex justify-between px-20 py-4 items-center font-[Jockey One] z-[999]">
+    return <div className="relative text-fontColor bg-BackgroundColor flex justify-between px-20 py-4 items-center font- z-[999]">
         <div className="text-3xl font-semibold tracking-wider">
             Edusphere
         </div>
         <div className="flex items-center">
-            <div className="font-semibold px-4 cursor-pointer" onClick={() => {
+            <motion.div className="px-4 cursor-pointer" onClick={() => {
                 navigate('/')
-            }}>Home</div>
-            <div className="font-semibold px-4 cursor-pointer" onClick={() => {
+            }} onHoverStart={()=> {
+                setHover('Home');
+            }} onHoverEnd={()=>{
+                setHover('');
+            }}>Home
+            <div className={`border-t-2 border-accent ${hover == 'Home' ? "w-full" : "w-0"} transition-all duration-200`}></div>
+            </motion.div>
+            <motion.div className="px-4 cursor-pointer" onClick={() => {
                 navigate('/purchasedCourses')
-            }}>Courses</div>
-            <div className="font-semibold px-4 cursor-pointer" onClick={() => {
-                navigate('/test')
-            }}>Tests</div>
-            {!loggedIn && <div className="font-semibold px-6 py-2 bg-[#383B52] shadow-md shadow-black rounded-full border-2 border-[#383B52] hover:bg-[#1D1E30] cursor-pointer" onClick={() => navigate('/login')}>Login</div>}
+            }} onHoverStart={()=> {
+                setHover('Courses');
+            }} onHoverEnd={()=>{
+                setHover('');
+            }}>Courses
+            <div className={`border-t-2 border-accent ${hover == 'Courses' ? "w-full" : "w-0"} transition-all duration-200`}></div>
+            </motion.div>
+
+            <motion.div className="px-4 cursor-pointer" onClick={() => {
+                navigate('/codeEditor')
+            }} onHoverStart={()=> {
+                setHover('Code Editor');
+            }} onHoverEnd={()=>{
+                setHover('');
+            }}>Code Editor
+            <div className={`border-t-2 border-accent ${hover == 'Code Editor' ? "w-full" : "w-0"} transition-all duration-200`}></div>
+            </motion.div>
+            
+            {!loggedIn && <div className="font-inter p-1 px-3 text-BackgroundColor rounded cursor-pointer bg-primary-200" onClick={() => navigate('/login')}>Login</div>}
             {loggedIn && <div className="mx-3 ml-2 cursor-pointer" onClick={() => setprofileOpen(true)}>
                 <Profile />
                 </div>}

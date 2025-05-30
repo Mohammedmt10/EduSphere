@@ -29,37 +29,37 @@ export default function LogInPage() {
         }
     }
     const navigate = useNavigate();
-    return <div className="bg-[#1D1E30] absolute h-screen max-w-screen w-full text-center pt-35 z-[9999]">
+    return <div className="bg-BackgroundColor text-fontColor absolute h-screen max-w-screen w-full text-center pt-35 z-[9999]">
         <div onClick={()=> {
                         navigate('/')
-                    }} className="text-white float-end pr-5 -translate-y-30 cursor-pointer">
+                    }} className="float-end pr-5 -translate-y-30 cursor-pointer">
                         <CloseIcon />
                     </div>
         <div className="w-fit mx-auto">
-            <div className="text-white text-4xl font-semibold">
+            <div className="text-4xl font-semibold">
                 Login
             </div>
             <form method="post" onSubmit={onclickHandler}>
-                <div className="text-white text-xl text-start mt-15">
+                <div className="text-xl text-start mt-10">
                     <div>
                         Username: <br />
-                        <input type="text" className="bg-white text-black outline-none px-2 py-1 rounded mt-1" name="username" />
+                        <input type="text" className="bg-BackgroundColor-200 outline-none px-2 py-1 rounded mt-1" name="username" spellCheck={false} autoComplete="off" />
                     </div>
                     <div className="mt-3">
                         Password: <br />
-                        <input type="password" className="bg-white text-black outline-none px-2 py-1 rounded mt-1" name="password" />
+                        <input type="password" className="bg-BackgroundColor-200 text-black outline-none px-2 py-1 rounded mt-1" name="password" />
                     </div>
-                    {success && <div className="text-red-600 font-normal text-base mt-2 text-center">
-                        incorrect credentails
+                    {success && <div className="text-accent font-normal text-base mt-2 text-center">
+                        Incorrect credentails
                         </div>}
-                    <button className="text-white bg-[#383B52] w-full mt-3 rounded py-1 cursor-pointer" type="submit">
+                    <button className="text-BackgroundColor bg-primary-200 w-full mt-3 rounded py-1 cursor-pointer font-semibold" type="submit">
                         Login
                     </button>
                 </div>
             </form>
         </div>
-        <div className="text-white mt-2 items-center">
-            Don't have an account? <a className="text-gray-500 border-b-1 cursor-pointer ml-1" onClick={() => navigate("/signup")}>SignUp</a>
+        <div className="text-fontColor mt-2 items-center">
+            Don't have an account? <a className="text-accent border-b-1 cursor-pointer ml-1" onClick={() => navigate("/signup")}>SignUp</a>
         </div>
     </div>
 }

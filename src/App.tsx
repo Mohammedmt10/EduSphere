@@ -16,7 +16,7 @@ import PaymentSuccessfull from "./components/paymentSuccessfull"
 
 function App() {
 
-  return <div>
+  return <div className="font-display">
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingPage />} />
@@ -28,7 +28,7 @@ function App() {
         <Route path="/purchasedCourses" element={<PurchasedCourses />} />
         <Route path="/content/:id" element={<CourseContent />} />
         <Route path="/lecture/:id" element={<LecturePlayer />} />
-        <Route path="/test" element={<TestPage />} />
+        <Route path="/codeEditor" element={<TestPage />} />
         <Route path="/adminDashboard" element={<AdminDashboard />} />
         <Route path="/createCourse" element={<CourseForm />} />
         <Route path="/addLectures/:id" element={<AddLectures />} />

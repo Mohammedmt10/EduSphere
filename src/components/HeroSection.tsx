@@ -1,21 +1,12 @@
 export default function Hero() {
-    return <div className="relative overflow-x-clip min-h-screen">
-        <div>
-            <div className="w-35 h-12 rounded-full bg-[#4C2795] rotate-35 -translate-x-10 translate-y-8"></div>
-            <div className="w-35 h-12 rounded-full bg-[#00FFF2] rotate-35 -translate-x-10 translate-y-11"></div>
-        </div>
+    return <div className="relative overflow-x-clip mb-90">
         <div className="text-center">
-            <div className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-[#FFFFFF] to-[#525252] mt-30">
+            <div className="text-7xl font-bold text-fontColor mt-50 font-display">
                 EduSphere
             </div>
-            <div className="text-xl font-bold text-[#6F76FD]">
-                Unlock Knowledge, Unlock Potentia
+            <div className="text-md mt-2 font-semibold text-secondary-100">
+                Unlock Knowledge, Unlock Potential
             </div>
         </div>
-        <div className="absolute right-0 mt-20">
-            <div className="w-35 h-12 rounded-full bg-[#4C2795] rotate-35 translate-x-10 translate-y-8"></div>
-            <div className="w-35 h-12 rounded-full bg-[#00FFF2] rotate-35 translate-x-10 translate-y-11"></div>
-        </div>
-        <img src="src\photos\Hero_Image.avif" className="mx-auto mt-80" />
     </div>
 }

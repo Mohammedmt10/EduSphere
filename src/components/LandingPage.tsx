@@ -4,7 +4,7 @@ import Hero from "./HeroSection";
 import NavBar from "./NavBar";
 
 export default function LandingPage() {
-    return  <div className="bg-[#1E1E1E] min-h-screen">
+    return  <div className="bg-BackgroundColor min-h-screen font-display">
     <div>
       <NavBar />
       <Hero />

@@ -24,11 +24,11 @@ export default function Courses() {
         Courses();
     },[]);
     const navigate = useNavigate();
-    return <div className="h-full mt-10">
-        <div className="text-6xl font-bold text-white text-center">
+    return <div className="h-full">
+        <div className="text-5xl font-semibold text-fontColor text-center border-b-4 w-fit mx-auto pb-5 border-accent">
             Courses
         </div>
-        <div className="w-fit mx-auto p-10 flex gap-10">
+        <div className="w-fit p-10 flex flex-wrap mx-15 gap-10 mb-10">
             {courses.map((course : course) => (
                 <div onClick={()=>{
                     navigate(`/course/${course._id}`)
