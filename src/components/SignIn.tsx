@@ -16,7 +16,7 @@ export default function SignIn() {
         const username = formData.get('username');
         const password = formData.get('password');
 
-        const response = await axios.post('http://localhost:3000/signup', {
+        const response = await axios.post('https://edusphere-backend-api.onrender.com/signup', {
             username : username,
             password : password
         });

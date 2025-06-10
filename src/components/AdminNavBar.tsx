@@ -12,7 +12,7 @@ export default function AdminNavBar() {
     const navigate = useNavigate();
 
     const getAdminInfo = async () => {
-        const response = await axios.get('http://localhost:3000/adminMe',{
+        const response = await axios.get('https://edusphere-backend-api.onrender.com/adminMe',{
           headers : {
             Authorization : localStorage.getItem('token')
           }

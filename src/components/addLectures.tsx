@@ -19,7 +19,7 @@ export default function AddLectures() {
     const [open , setOpen] = useState(false);
 
     const getLectures = async ()=> {
-        const response = await axios.get(`http://localhost:3000/getLectures/${id}`,{
+        const response = await axios.get(`https://edusphere-backend-api.onrender.com/getLectures/${id}`,{
             headers : {
                 Authorization : localStorage.getItem('token')
             }
@@ -37,7 +37,7 @@ export default function AddLectures() {
         const title = formData.get('title');
         const videoUrl = formData.get('videoUrl');
 
-        const response = await axios.post(`http://localhost:3000/addLecture/${id}`,{
+        const response = await axios.post(`https://edusphere-backend-api.onrender.com/addLecture/${id}`,{
             title : title,
             videoUrl : videoUrl
         } , {

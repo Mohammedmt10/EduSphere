@@ -22,7 +22,7 @@ export default function PurchasedCourses() {
     const navigate = useNavigate();
 
     const purchasedCourses = async () => {
-        const response = await axios.get('http://localhost:3000/purchasedCourses', {
+        const response = await axios.get('https://edusphere-backend-api.onrender.com/purchasedCourses', {
             headers : {
                 Authorization : localStorage.getItem('token')
             }

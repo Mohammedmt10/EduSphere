@@ -22,7 +22,7 @@ export default function CourseDetails() {
         let price = course.price || 1;
 
         price = price * 100;
-        const result = await axios.post('http://localhost:3000/payment',{
+        const result = await axios.post('https://edusphere-backend-api.onrender.com/payment',{
             title : title,
             price : price,
             courseId : course._id
@@ -39,7 +39,7 @@ export default function CourseDetails() {
     }
 
     const courseDetails = async () => {
-        const response = await axios.get(`http://localhost:3000/course/${id}`);
+        const response = await axios.get(`https://edusphere-backend-api.onrender.com/course/${id}`);
         const data = response.data.response ;
         if(data) {
             setCourse(data);

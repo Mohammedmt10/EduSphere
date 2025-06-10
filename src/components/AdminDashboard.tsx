@@ -18,7 +18,7 @@ const AdminDashboard = () => {
   const navigate = useNavigate();
 
   const getAdminCourses = async () => {
-    const response = await axios.get('http://localhost:3000/getAdminCourses',{
+    const response = await axios.get('https://edusphere-backend-api.onrender.com/getAdminCourses',{
       headers : {
         Authorization : localStorage.getItem('token')
       }

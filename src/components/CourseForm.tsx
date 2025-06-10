@@ -18,7 +18,7 @@ export default function CourseForm() {
         const price = Number(formData.get('price'));
         const imgUrl = formData.get('imgUrl');
 
-        const response = await axios.post('http://localhost:3000/createCourse',{
+        const response = await axios.post('https://edusphere-backend-api.onrender.com/createCourse',{
             title : title,
             description : desc,
             price : price,

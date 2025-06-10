@@ -18,14 +18,14 @@ export default function TestPage() {
         if(code == null) {
             return;
         }
-        const response = await axios.post('http://localhost:3000/test',{
+        const response = await axios.post('https://edusphere-backend-api.onrender.com/test',{
             code : code
         });
         const token = response.data.token;
         
         setLoader(c => !c)
 
-        const result = await axios.get('http://localhost:3000/getOutput',{
+        const result = await axios.get('https://edusphere-backend-api.onrender.com/getOutput',{
             headers : {
                 Authorization : token
             }

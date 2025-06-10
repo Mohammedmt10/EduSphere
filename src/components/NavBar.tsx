@@ -18,7 +18,7 @@ export default function NavBar() {
         setloggedIn(false);
     }
     const userInfo = async () => {
-            const response = await axios.get('http://localhost:3000/me',{
+            const response = await axios.get('https://edusphere-backend-api.onrender.com/me',{
             headers : {
                 Authorization : localStorage.getItem('token')
             }
@@ -34,7 +34,7 @@ export default function NavBar() {
     useEffect(() => {
         userInfo();
     },[])
-    return <div className="text-fontColor bg-BackgroundColor flex justify-between not-md:px-10 px-20 py-4 items-center font- z-[999] border-b-1 border-fontColor sticky min-w-full">
+    return <div className="text-fontColor bg-BackgroundColor flex justify-between not-md:px-10 px-20 py-4 items-center font- z-[999] border-b-1 border-fontColor min-w-full">
         <div className="text-3xl font-semibold tracking-wider">
             Edusphere
         </div>
@@ -43,7 +43,7 @@ export default function NavBar() {
         }}>
             <Menu />
         </div>
-        <div className={`flex items-center md:flex  ${!open ? "hidden not-md:hidden": "absolute not-md:block not-md:mt-150 not-md:text-center not-md:p-10 rounded-2xl not-md:mx-auto not-md:bg-BackgroundColor-100 not-md:h-fit not-md:w-100"}`}>
+        <div className={`flex items-center md:flex  ${!open ? "hidden not-md:hidden": "not-md:absolute not-md:block not-md:mt-150 not-md:text-center not-md:py-8 rounded-2xl not-md:bg-BackgroundColor-100 not-md:px-14 z-[999] not-md:left-1/2 not-md:-translate-x-1/2"}`}>
             <div className="top-5 right-5 absolute cursor-pointer md:hidden" onClick={()=>{
                 setOpen(c=> !c);
             }}>
