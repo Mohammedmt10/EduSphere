@@ -1,5 +1,5 @@
 export default function Footer() {
-    return <div className="px-30 bg-BackgroundColor-200 py-10">
+    return <div className="px-30 bg-BackgroundColor-200 py-10 not-md:px-10">
         <div className="text-fontColor font-bold text-4xl tracking-wider mb-10">
             EduSphere
         </div>

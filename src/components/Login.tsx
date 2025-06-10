@@ -52,14 +52,14 @@ export default function LogInPage() {
                     {success && <div className="text-accent font-normal text-base mt-2 text-center">
                         Incorrect credentails
                         </div>}
-                    <button className="text-BackgroundColor bg-primary-200 w-full mt-3 rounded py-1 cursor-pointer font-semibold" type="submit">
+                    <button className="text-BackgroundColor bg-primary-200 w-full mt-3 rounded py-1 cursor-pointer font-medium" type="submit">
                         Login
                     </button>
                 </div>
             </form>
         </div>
         <div className="text-fontColor mt-2 items-center">
-            Don't have an account? <a className="text-accent border-b-1 cursor-pointer ml-1" onClick={() => navigate("/signup")}>SignUp</a>
+            Don't have an account? <a className="text-secondary-100 border-b-1 cursor-pointer ml-1" onClick={() => navigate("/signup")}>SignUp</a>
         </div>
     </div>
 }

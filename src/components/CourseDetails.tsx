@@ -28,7 +28,13 @@ export default function CourseDetails() {
             courseId : course._id
         });
 
-        window.location.href = result.data.url;
+        if(result.data.message) {
+            alert('something went wrong');
+        }
+        if(result.data.url) {
+            window.location.href = result.data.url;
+        }
+
 
     }
 
@@ -45,29 +51,29 @@ export default function CourseDetails() {
     useEffect(()=>{   
         courseDetails();
     },[]);
-    return <div className="bg-[#1D1E30] min-h-screen flex">
-        <div className="border-r-2 w-full min-h-screen border-[#383B52]">
-            <img src={course.imageUrl} className="pt-20 px-30 w-4xl" />
-            <div className=" px-30 pb-10">
-                <h1 className="text-white text-2xl font-bold tracking-wider py-10">Overview :</h1>
-                <div className="text-white">
+    return <div className="bg-BackgroundColor min-h-screen flex not-md:block">
+        <div className="border-r-2 w-full pb-20 border-fontColor">
+            <img src={course.imageUrl} className="pt-20 px-30 not-md:px-12 w-4xl" />
+            <div className=" px-30 not-md:px-12">
+                <h1 className="text-fontColor text-2xl font-bold tracking-wider py-10">Overview :</h1>
+                <div className="text-fontColor">
                     {course.description}
                 </div>
             </div>
         </div>
-        <div className="text-white">
-            <div className="text-2xl px-10 py-9">
+        <div className="text-fontColor text-center md:py-10 pb-10">
+            <div className="text-2xl px-10 pb-9">
                 Bill
             </div>
-            <div className="justify-between py-3 flex px-10 w-80">
+            <div className="justify-between py-3 flex px-10 w-80 mx-auto">
                 <div>
                     Price
                 </div>
                 <div>
-                    {course.price}
+                    ${course.price}
                 </div>
             </div>
-            <div className="justify-between py-3 flex px-10 w-80">
+            <div className="justify-between py-3 flex px-10 w-80 mx-auto">
                 <div>
                     Tax
                 </div>
@@ -75,15 +81,15 @@ export default function CourseDetails() {
                     0%
                 </div>
             </div>
-            <div className="justify-between py-3 flex px-10 w-80">
+            <div className="justify-between py-3 flex px-10 w-80 mx-auto">
                 <div>
                     Total
                 </div>
                 <div>
-                    {course.price}
+                    ${course.price}
                 </div>
             </div>
-            <div className="mx-10 text-center bg-[#383B52] py-2 text-2xl font-bold cursor-pointer rounded mt-20" onClick={()=> {
+            <div className="mx-10 text-center bg-primary-200 py-2 text-xl font-medium text-BackgroundColor-200 cursor-pointer rounded mt-20" onClick={()=> {
                 purchasedCourse();
             }}>
                 Buy

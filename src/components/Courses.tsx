@@ -17,20 +17,20 @@ interface course {
 export default function Courses() {
     const [courses , setCourses] = useState([])
     const Courses = async () => {
-        const response = await axios.get('http://localhost:3000/courses');
+        const response = await axios.get('https://edusphere-backend-api.onrender.com/courses');
         setCourses(response.data.courses);
     }
     useEffect(()=>{
         Courses();
     },[]);
     const navigate = useNavigate();
-    return <div className="h-full">
+    return <div className="h-full w-full">
         <div className="text-5xl font-semibold text-fontColor text-center border-b-4 w-fit mx-auto pb-5 border-accent">
             Courses
         </div>
-        <div className="w-fit p-10 flex flex-wrap mx-15 gap-10 mb-10">
+        <div className="w-fit p-10 flex flex-wrap mx-auto gap-10 mb-10">
             {courses.map((course : course) => (
-                <div onClick={()=>{
+                <div className="mx-auto" onClick={()=>{
                     navigate(`/course/${course._id}`)
                 }}>
                     <CardElement title={course.title} price={course.price} buttonText="Buy" imageUrl={course.imageUrl}  />

@@ -6,7 +6,7 @@ interface iCard {
 }
 
 export default function CardElement(props : iCard) {
-    return <div className="w-100 rounded-lg overflow-clip cursor-pointer hover:-translate-y-1 duration-300 hover:scale-110">
+    return <div className="w-100 rounded-lg overflow-clip cursor-pointer hover:-translate-y-1 duration-300 hover:scale-105">
         <div>
             <img src={props.imageUrl} className="w-100 h-50"/>
         </div>

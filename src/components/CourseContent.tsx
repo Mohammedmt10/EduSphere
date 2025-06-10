@@ -23,16 +23,19 @@ export default function CourseContent() {
                 Authorization : localStorage.getItem('token')
             }
         })
-        setLectures(response.data.lecture);
+        setLectures(response.data.lectures);
+        console.log(lectures);
     }
+
 
     useEffect(()=> {
         getLec();
     },[])
 
-    return <div className="min-h-screen bg-[#16171B]">
+    return <div className="min-h-screen bg-BackgroundColor">
         <NavBar />
-        {lectures.map((lecture : Ilec) => (
+        <div className="text-fontColor text-2xl p-5 pl-10">Lectures :</div>
+        {lectures && lectures.map((lecture : Ilec) => (
             <LectureCard title={lecture.title} date={lecture.createdAt} lectureId={lecture._id} />
         ))}
     </div>

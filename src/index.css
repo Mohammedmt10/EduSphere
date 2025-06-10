@@ -11,5 +11,7 @@
   --color-secondary-200:#203888;
   --color-secondary-100:#295ee7;
   --color-BackgroundColor-200: #144d44;
-  --font-display : "Inter", sans-serif
+  --color-BackgroundColor-100:#10917a;
+  --font-display : "Inter", sans-serif;
+  --font-code : "Inconsolata", monospace
 }

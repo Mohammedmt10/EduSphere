@@ -34,37 +34,37 @@ export default function SignIn() {
     const navigate = useNavigate();
     
     return <div>
-            <div className="bg-[#1D1E30] h-screen w-screen text-center pt-35">
+            <div className="bg-BackgroundColor h-screen w-screen text-center pt-35">
             <div onClick={()=> {
                 navigate('/');
-            }} className="text-white float-end pr-5 -translate-y-30 cursor-pointer">
+            }} className="text-fontColor float-end pr-5 -translate-y-30 cursor-pointer">
                 <CloseIcon />
             </div>
             <div className="w-fit mx-auto">
-                <div className="text-white text-4xl font-semibold relative">
+                <div className="text-fontColor text-4xl font-semibold relative">
                     Sign Up
                 </div>
                 <form method="post" onSubmit={submitHandler}>
-                    <div className="text-white text-xl text-start mt-15">
+                    <div className="text-fontColor text-xl text-start mt-10">
                         <div>
                             Username: <br />
-                            <input type="text" className="bg-white text-black outline-none px-2 py-1 rounded mt-1" name="username" />
+                            <input type="text" className="bg-BackgroundColor-200 text-fontColor outline-none px-2 py-1 rounded mt-1" name="username" />
                         </div>
                         <div className="mt-3">
                             Password: <br />
-                            <input type="password" className="bg-white text-black outline-none px-2 py-1 rounded mt-1" name="password" />
+                            <input type="password" className="bg-BackgroundColor-200 text-fontColor outline-none px-2 py-1 rounded mt-1" name="password" />
                         </div>
                         {!success && <div className="text-red-600 text-base text-center mt-2">
                                 incorrect credentails
                             </div>}
-                        <button className="text-white bg-[#383B52] w-full mt-3 rounded py-1 cursor-pointer" type="submit">
+                        <button className="text-BackgroundColor-200 bg-primary-200 w-full mt-3 rounded py-1 cursor-pointer" type="submit">
                             Sign Up
                         </button>
                     </div>
                 </form>
             </div>
             <div className="text-white mt-2 items-center">
-                Already have an account? <a className="text-gray-500 border-b-1 cursor-pointer ml-1" onClick={() => navigate("/login")}>Login</a>
+                Already have an account? <a className="text-secondary-100 border-b-1 cursor-pointer ml-1 font-medium" onClick={() => navigate("/login")}>Login</a>
             </div>
         </div>
     </div>

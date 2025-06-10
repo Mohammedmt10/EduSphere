@@ -38,15 +38,15 @@ export default function PurchasedCourses() {
         purchasedCourses();
     } , [])
 
-    return <div className="min-h-screen min-w-screen bg-[#16171B] text-white">
+    return <div className="min-h-screen min-w-screen bg-BackgroundColor text-fontColor">
         <NavBar />
         <div>
-            <div className="font-bold text-2xl p-8">
+            <div className="font-bold text-2xl p-8 ml-12">
                 Purchased Courses
             </div>
-            <div className="grid grid-cols-3 ml-10">
+            <div className="flex flex-wrap md:mx-12 gap-10">
                 {courses.map((course : course)=> (
-                    <div className="my-4" onClick={()=> {
+                    <div className="my-4 mx-auto" onClick={()=> {
                         navigate(`/content/${course.courseId._id}`);
                     }}>
                     <CardElement title={course.courseId.title} price={course.courseId.price} imageUrl={course.courseId.imageUrl}  buttonText="View Course" /></div>
