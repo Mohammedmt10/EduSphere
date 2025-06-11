@@ -43,7 +43,7 @@ export default function NavBar() {
         }}>
             <Menu />
         </div>
-        <div className={`flex items-center md:flex  ${!open ? "hidden not-md:hidden": "not-md:absolute not-md:block not-md:mt-150 not-md:text-center not-md:py-8 rounded-2xl not-md:bg-BackgroundColor-100 not-md:px-14 z-[999] not-md:left-1/2 not-md:-translate-x-1/2"}`}>
+        <div className={`flex items-center md:flex  ${!open ? "hidden not-md:hidden": "not-md:absolute not-md:block not-md:mt-150 not-md:text-center not-md:py-8 rounded-2xl not-md:bg-BackgroundColor-100 not-md:px-14 z-[999] not-md:left-1/2 not-md:-translate-x-1/2 not-md:min-w-60"}`}>
             <div className="top-5 right-5 absolute cursor-pointer md:hidden" onClick={()=>{
                 setOpen(c=> !c);
             }}>

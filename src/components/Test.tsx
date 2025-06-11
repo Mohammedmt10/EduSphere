@@ -55,14 +55,14 @@ export default function TestPage() {
                 <div className="text-3xl">
                     Code
                 </div>
-                <div className="max-w-200 md:w-200 min-w-80">
-                    <textarea name="" id="" rows={20} className="bg-BackgroundColor-200 mt-3 outline-0 px-7 w-full text-xl font-code" onChange={getCode}></textarea>
+                <div className="max-w-200 lg:w-200 md:min-w-80 not-md:w-full">
+                    <textarea name="" id="" rows={20} className="bg-BackgroundColor-200 mt-3 outline-0 px-7 w-full text-xl font-code not-lg:w-full" onChange={getCode}></textarea>
                 </div>
                 <button onClick={compileCode} className="p-2 bg-primary-200 text-BackgroundColor-200 rounded cursor-pointer">compile</button>
             </div>
             <div className="text-fontColor mt-10 mx-10 not-md:mx-5 text-3xl">
                 <div>Output</div>
-                <div ref={iframeRef} className="text-fontColor text-xl bg-BackgroundColor-200 h-120 p-3 w-md mt-3 rounded overflow-auto">{output}</div>
+                <div ref={iframeRef} className="text-fontColor text-xl bg-BackgroundColor-200 h-140 p-3 w-md not-md:w-full mt-3 rounded overflow-auto">{output}</div>
             </div>
         </div>
     </div>
