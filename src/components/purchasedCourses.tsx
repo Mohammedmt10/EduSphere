@@ -44,14 +44,14 @@ export default function PurchasedCourses() {
             <div className="font-bold text-2xl p-8 ml-12">
                 Purchased Courses
             </div>
-            <div className="flex flex-wrap md:mx-12 gap-10">
+            {courses[0] && <div className="flex flex-wrap md:mx-12 gap-10">
                 {courses.map((course : course)=> (
                     <div className="my-4 mx-auto" onClick={()=> {
                         navigate(`/content/${course.courseId._id}`);
                     }}>
                     <CardElement title={course.courseId.title} price={course.courseId.price} imageUrl={course.courseId.imageUrl}  buttonText="View Course" /></div>
                 ))}
-            </div>
+            </div>}
         </div>
     </div>
 }

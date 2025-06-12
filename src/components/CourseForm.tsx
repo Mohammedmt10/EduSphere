@@ -39,31 +39,43 @@ export default function CourseForm() {
         }
     }
 
-    return <div className="bg-[#141439] h-screen">
+    return <div className="bg-BackgroundColor h-screen overflow-clip max-h-screen">
         <AdminNavBar />
-        <form className="text-amber-50 text-lg p-10 w-145" onSubmit={createCourse}>
-            Title : 
-            <input type="text" className="bg-[#202051] outline-0 ml-18 rounded py-1.5 px-5 w-96 mb-5 font-normal" name="title" placeholder="Name of the Course" />
-            <div className="flex mb-5">
-                <div>
+        <div className="flex h-full">
+        <form className="text-fontColor text-lg p-10 w-fit not-sm:w-fit not-sm:mx-auto border-r-2 h-full pr-60" onSubmit={createCourse}>
+            <div className="flex not-sm:block">
+                <div className="py-2">Title :</div> 
+                    <input type="text" className="bg-BackgroundColor-200 outline-0 ml-18 rounded py-1.5 px-5 w-96 mb-2 font-normal not-sm:ml-0" name="title" placeholder="Name of the Course" />
+            </div>
+            <div className="flex mb-2 not-sm:block">
+                <div className="py-2">
                     Description :
                 </div>
-                <textarea className="bg-[#202051] outline-0 ml-4 rounded p-1 py-1.5 px-5 w-96 resize-none" placeholder="Information about your course" name="desc" rows={5} />
+                <textarea className="bg-BackgroundColor-200 outline-0 ml-4 rounded p-1 py-1.5 px-5 w-96 resize-none not-sm:ml-0" placeholder="Information about your course" name="desc" rows={5} />
             </div>
-            Price : 
-            <input type="text" className="bg-[#202051] outline-0 ml-17 rounded p-2 px-5 w-96 mb-5" name="price" placeholder="Price in INR" />
-            <br />
-            Image Url : 
-            <input type="text" className="bg-[#202051] outline-0 ml-8 rounded p-2 px-5 w-95 mb-3" name="imgUrl" placeholder="Image which will be displayed on course" />
-            <br />
-            {message && <div className="text-red-500 text-center mb-3">
-                    {message}
-                </div>}
-            <div>
-                <button className="bg-[#3aa0ba] w-fit font-medium py-1 px-2.5 rounded-lg hover:cursor-pointer text-shadow-lg shadow-black float-right relative" type="submit">
-                Create
-            </button>
+            <div className="flex not-sm:block">
+                <div className="py-2">Price :</div>
+                    <input type="text" className="bg-BackgroundColor-200 outline-0 ml-16 rounded p-2 px-5 w-96 mb-2 not-sm:ml-0" name="price" placeholder="Price in Dollar" />
+                </div>
+                <div className="flex not-md:block">
+                    <div className="py-2">Image Url : </div>
+                    <input type="text" className="bg-BackgroundColor-200 outline-0 ml-7 rounded p-2 px-5 w-95 mb-4 not-md:ml-0" name="imgUrl" placeholder="Image which will be displayed on course" />
+                </div>
+                {message && <div className="text-red-500 text-center mb-3">
+                        {message}
+                    </div>}
+                <div>
+                    <button className="bg-primary-200 text-BackgroundColor w-fit font-medium py-1 px-2.5 rounded hover:cursor-pointer float-right relative" type="submit">
+                    Create
+                </button>
+                </div>
+            </form>
+            <div className="text-fontColor px-8">
+                <div className="text-4xl py-8 tracking-tight">Create Your Course</div>
+                <div className="w-120 tracking-wider">
+                    You can create your course here. Fill all the fields all of them are required. The price is going to be in dollar. 
+                </div>
             </div>
-        </form>
+        </div>
     </div>
 }

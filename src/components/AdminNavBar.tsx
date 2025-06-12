@@ -29,9 +29,9 @@ export default function AdminNavBar() {
         getAdminInfo();
       },[])
 
-    return <div className="relative text-white bg-[#1D1E30] flex justify-between px-20 py-4 items-center font-[Jockey One] z-[99]">
+    return <div className="relative text-fontColor bg-BackgroundColor flex justify-between px-20 py-4 items-center font-[Jockey One] z-[99] border-b-1 border-fontColor">
         <div className="text-3xl font-semibold tracking-wider">Edushpere</div>
-        {!loggedIn && <div className="font font-semibold px-6 py-2 bg-[#383B52] shadow-md shadow-black rounded-full text-white hover:bg-[#46436d] cursor-pointer"
+        {!loggedIn && <div className="font font-semibold px-2 py-1 bg-primary-200 rounded text-BackgroundColor cursor-pointer"
           onClick={() => navigate('/adminLogin')}>
           Login
         </div>}
@@ -40,7 +40,7 @@ export default function AdminNavBar() {
         }} className='cursor-pointer'>
             <Profile />
           </div>}
-          {adminDetails && loggedIn && <div className='absolute right-0 mr-10 mt-40 bg-[#342b52] p-5 text-center rounded-xl'>
+          {adminDetails && loggedIn && <div className='absolute right-0 mr-10 mt-40 bg-BackgroundColor-200 p-5 text-center rounded-xl'>
               <div>
                 <div className='right-2 top-2 absolute cursor-pointer' onClick={()=> {
                   setAdminDetails(false);
@@ -53,7 +53,7 @@ export default function AdminNavBar() {
                 <div onClick={() => {
                   localStorage.removeItem('token');
                   getAdminInfo();
-                }} className='w-full bg-[#160c38] mt-3 py-1 rounded-full hover:bg-transparent border-2 border-[#1c1141] cursor-pointer'>
+                }} className='w-full bg-primary-200 text-BackgroundColor mt-3 py-1 rounded border-2 cursor-pointer'>
                   Logout
                 </div>
               </div>
