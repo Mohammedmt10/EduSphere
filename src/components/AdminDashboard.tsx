@@ -26,6 +26,7 @@ const AdminDashboard = () => {
     setCourses(response.data.courses)
   }
 
+
   useEffect(()=> {
     getAdminCourses();
   },[])
@@ -33,18 +34,20 @@ const AdminDashboard = () => {
   return (
     <div className="bg-BackgroundColor min-h-screen">
       <AdminNavBar />
-      <div className="text-white px-10 pt-10">
+      <div className="text-white px-10 pt-10 w-full">
         <h2 className="text-4xl font-bold mb-8 font-display">My Courses</h2>
 
-        <div className="grid grid-cols-3 gap-6">
-          {courses.map((course : ICourse) => (
+        <div className="flex flex-wrap gap-8 mx-auto w-full items-center">
+          {courses && <div className=' flex flex-wrap gap-8'>
+            {courses.map((course : ICourse) => (
             <div onClick={() => {
               navigate(`/addLectures/${course._id}`)
             }}>
-              <CardElement title={course.title} imageUrl={course.imageUrl} price={course.price} buttonText='view' />
+              <CardElement title={course.title} imageUrl={course.imageUrl} price={course.price} buttonText='view' deleteOption={true} _id={course._id} />
             </div>
           ))}
-          <div className="bg-gradient-to-b from-BackgroundColor-200 to-BackgroundColor-150 rounded-3xl flex items-center justify-center cursor-pointer hover:opacity-85 transition hover:-translate-y-1 h-52 duration-300 drop-shadow-lg drop-shadow-[#0000006a]"
+          </div>}
+          <div className="bg-gradient-to-b from-BackgroundColor-200 to-BackgroundColor-150 rounded-3xl flex items-center justify-center cursor-pointer hover:opacity-85 transition hover:-translate-y-1 h-52 duration-300 w-100"
             onClick={() => {navigate('/createCourse')}}>
              <div>
                 <svg xmlns="http://www.w3.org/2000/svg" className="size-13" fill="white" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">

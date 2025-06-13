@@ -29,6 +29,7 @@ export default function CourseForm() {
             }
         });
 
+
         if(response.data.message == "course created") {
             setMessage('Course has been created');
             navigate('/adminDashboard');
