@@ -48,6 +48,9 @@ export default function AddLectures() {
 
         if(response.data.message == "lecture has been created") {
             alert('lecture has been created');
+            await axios.post('https://edusphere-backend-mww7.onrender.com/buy',{
+                courseId :response.data._id
+            });
             setOpen(c => !c);
         } else {
             alert('something went wrong');
