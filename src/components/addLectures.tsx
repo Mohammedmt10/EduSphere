@@ -24,7 +24,7 @@ export default function AddLectures() {
                 Authorization : localStorage.getItem('token')
             }
         });
-        if(response.data.lecture) {
+        if(response.data.lectures) {
             setLectures(response.data.lectures);
         }
     }
