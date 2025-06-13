@@ -19,6 +19,10 @@ export default function CardElement(props : iCard) {
     const onclickHandler = async () => {
         const result = await axios.post('https://edusphere-backend-mww7.onrender.com/deleteCourse',{
             courseId : props._id
+        }, {
+            headers : {
+                Authorization : localStorage.getItem('token')
+            }
         });
         if(result.data.message == "course has been deleted") {
             alert('course was deleted');
