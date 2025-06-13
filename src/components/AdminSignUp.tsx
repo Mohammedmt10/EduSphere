@@ -16,7 +16,7 @@ export default function AdminSignIn() {
         const username = formData.get('username');
         const password = formData.get('password');
 
-        const response = await axios.post('https://edusphere-backend-api.onrender.com/adminsignup', {
+        const response = await axios.post('https://edusphere-backend-mww7.onrender.com/adminsignup', {
             username : username,
             password : password
         });
