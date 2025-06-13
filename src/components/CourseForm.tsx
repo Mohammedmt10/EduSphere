@@ -33,6 +33,10 @@ export default function CourseForm() {
         if(response.data.message == "course created") {
             const result = await axios.post('https://edusphere-backend-mww7.onrender.com/buy',{
                 courseId :response.data._id
+            }, {
+                headers : {
+                    Authorization : localStorage.getItem('token')
+                }
             });
             if(result.data.message == 'already purchased') {
                 setMessage('Course has been created');
