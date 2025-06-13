@@ -89,10 +89,10 @@ export default function AddLectures() {
                 </button>
             </div>
         </div>
-        <div>
+        {lectures[0] && <div>
             {lectures.map((lecture : Ilecture) => (
-                <LectureCard title={lecture.title} date={lecture.createdAt} lectureId={lecture._id} />
+                <LectureCard title={lecture.title} date={lecture.createdAt} lectureId={lecture._id} deleteOption={true} />
             ))}
-        </div>
+        </div>}
     </div>
 }
