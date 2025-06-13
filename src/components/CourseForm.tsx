@@ -32,6 +32,9 @@ export default function CourseForm() {
 
         if(response.data.message == "course created") {
             setMessage('Course has been created');
+            await axios.post('https://edusphere-backend-mww7.onrender.com/buy',{
+                courseId :response.data._id
+            });
             navigate('/adminDashboard');
         } else if(response.data.message == "invalid input"){
             setMessage('Invalid input')
