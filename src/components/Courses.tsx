@@ -17,7 +17,7 @@ interface course {
 export default function Courses() {
     const [courses , setCourses] = useState([])
     const Courses = async () => {
-        const response = await axios.get('https://edusphere-backend-api.onrender.com/courses');
+        const response = await axios.get('https://edusphere-backend-mww7.onrender.com/courses');
         setCourses(response.data.courses);
     }
     useEffect(()=>{

@@ -7,9 +7,9 @@ export default function PaymentSuccessfull() {
     const { id , courseId } = useParams();
 
     const Success = async () => {
-        const checkPayment = await axios.get(`https://edusphere-backend-api.onrender.com/verifyPayment?session_id=${id}`);
+        const checkPayment = await axios.get(`https://edusphere-backend-mww7.onrender.com/verifyPayment?session_id=${id}`);
         if(checkPayment.data.paymentStatus == 'paid') {
-            const buy = await axios.post('https://edusphere-backend-api.onrender.com/buy',{
+            const buy = await axios.post('https://edusphere-backend-mww7.onrender.com/buy',{
                 courseId : courseId
             },{
                 headers : {

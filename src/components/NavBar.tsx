@@ -16,9 +16,10 @@ export default function NavBar() {
     const logoutCall = async () => {
         localStorage.removeItem('token')
         setloggedIn(false);
+        setprofileOpen(false);
     }
     const userInfo = async () => {
-            const response = await axios.get('https://edusphere-backend-api.onrender.com/me',{
+            const response = await axios.get('https://edusphere-backend-mww7.onrender.com/me',{
             headers : {
                 Authorization : localStorage.getItem('token')
             }
@@ -82,7 +83,7 @@ export default function NavBar() {
             {loggedIn && <div className="mx-3 ml-2 cursor-pointer not-md:hidden" onClick={() => setprofileOpen(true)}>
                 <Profile />
                 </div>}
-            {loggedIn && profileOpen && <div className="absolute font-medium px- py-3 bg-BackgroundColor-200  ml-20 mt-40 text-center w-70 rounded-lg mx-auto">
+            { profileOpen && <div className="absolute font-medium px- py-3 bg-BackgroundColor-200  ml-20 mt-40 text-center w-70 rounded-lg mx-auto">
                 <div className="top-3 right-3 absolute -translate-y-1 cursor-pointer" onClick={()=>{
                     setprofileOpen(false)
                 }}>

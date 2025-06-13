@@ -13,7 +13,7 @@ export default function LecturePlayer() {
   const { id } = useParams();
   const [lecDetails , setLecDetails] = useState<Partial<lec>>({});
   const getData = async () => {
-    const response = await axios.get(`https://edusphere-backend-api.onrender.com/lecture/${id}`,{
+    const response = await axios.get(`https://edusphere-backend-mww7.onrender.com/lecture/${id}`,{
       headers : {
         Authorization : localStorage.getItem('token')
       }
