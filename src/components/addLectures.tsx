@@ -58,30 +58,30 @@ export default function AddLectures() {
         getLectures();
     },[])
 
-    return <div className="bg-[#141439] min-h-screen">
-            {open && <div className=" absolute h-screen w-screen bg-[#141439] z-[999] text-amber-50 flex">
+    return <div className="bg-BackgroundColor min-h-screen">
+            {open && <div className=" absolute h-screen w-screen bg-BackgroundColor z-[999] text-fontColor flex">
                 <div className="absolute right-0 p-3 cursor-pointer" onClick={() => {
                     setOpen(c => !c);
                 }}>
                     <CloseIcon />
                 </div>
-                <form onSubmit={createLecture} className="mx-auto my-auto">
+                <form onSubmit={createLecture} className="mx-auto mt-[14%]">
                     <div className="my-2">Title : </div>
-                    <input type="text" className="bg-[#202051] rounded p-2 px-5 outline-0" name="title" />
+                    <input type="text" className="bg-BackgroundColor-200 rounded p-2 px-5 outline-0" name="title" />
                     <br />
                     <div className="my-2 mt-4">Video Url : </div>
-                    <input type="text" name="videoUrl" className="bg-[#202051] rounded p-2 px-5 outline-0" />
+                    <input type="text" name="videoUrl" className="bg-BackgroundColor-200 rounded p-2 px-5 outline-0" />
                     <br />
-                    <button className="my-4 py-1 rounded cursor-pointer w-full text-center bg-[#3aa0ba]" type="submit">
+                    <button className="my-4 py-1 rounded cursor-pointer w-full text-center bg-primary-200 text-BackgroundColor" type="submit">
                         Upload
                     </button>
                 </form>
             </div>}
         <AdminNavBar />
-        <div className="text-amber-50 p-5 text-3xl font-medium tracking-tighter flex justify-between">
+        <div className="text-fontColor p-5 text-3xl font-medium tracking-tighter flex justify-between mx-16">
             Your Lectures :
             <div>
-                <button className="text-lg font-normal cursor-pointer tracking-normal bg-[#3aa0ba] px-3 rounded-md flex items-center gap-1 py-1" onClick={()=>{
+                <button className="text-lg text-BackgroundColor font-normal cursor-pointer tracking-normal bg-primary-200 px-3 rounded-md flex items-center gap-1 py-1" onClick={()=>{
                     setOpen(c => !c);
                 }}>
                 <PlusIcon />
