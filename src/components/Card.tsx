@@ -1,6 +1,5 @@
 import axios from "axios"
 import DeleteIcon from "../icons/delete"
-import CourseDetails from "./CourseDetails"
 import mongoose from "mongoose"
 import { useNavigate } from "react-router-dom"
 
