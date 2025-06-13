@@ -38,7 +38,7 @@ export default function CourseForm() {
                     Authorization : localStorage.getItem('token')
                 }
             });
-            if(result.data.message == 'already purchased') {
+            if(result.data.message == 'purchased') {
                 setMessage('Course has been created');
                 navigate('/adminDashboard');
             }

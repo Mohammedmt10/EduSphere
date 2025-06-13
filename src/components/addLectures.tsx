@@ -25,7 +25,7 @@ export default function AddLectures() {
             }
         });
         if(response.data.lecture) {
-            setLectures(response.data.lecture);
+            setLectures(response.data.lectures);
         }
     }
 
