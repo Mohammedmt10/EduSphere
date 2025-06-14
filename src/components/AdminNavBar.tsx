@@ -19,22 +19,28 @@ export default function AdminNavBar() {
           }
         });
         if(response.data.message == 'no token provided') {
-            setLoggedIn(false);
-            setAdminDetails(false);
-          } else {
-            setUsername(response.data.user.username);
-            setLoggedIn(true);
-          }
+          setLoggedIn(false);
+          setAdminDetails(false);
           setTimeout(()=> {
             setLoading(false);
           }, 1000)
+          } else {
+            setUsername(response.data.user.username);
+            setLoggedIn(true);
+            setTimeout(()=> {
+              setLoading(false);
+            }, 1000)
+          }
+          setTimeout(()=> {
+              setLoading(false);
+            }, 1000)
       }
 
       useEffect(()=> {
         getAdminInfo();
       },[])
 
-      if(loading) return <div className="relative text-fontColor bg-BackgroundColor flex justify-between px-20 py-4 items-center font-[Jockey One] z-[99] border-b-1 border-fontColor">
+      if(loading) return <div className="relative text-fontColor bg-BackgroundColor flex justify-between px-20 py-4 items-center font-[Jockey One] z-[99] border-b-1 border-fontColor not-sm:px-8">
         <div className="text-3xl font-semibold tracking-wider">Edushpere</div>
 
         <div className="min-h-8 min-w-8 rounded-full bg-BackgroundColor-150 animate-pulse">
@@ -42,7 +48,7 @@ export default function AdminNavBar() {
         </div>
       </div>
 
-    return <div className="relative text-fontColor bg-BackgroundColor flex justify-between px-20 py-4 items-center font-[Jockey One] z-[99] border-b-1 border-fontColor">
+    return <div className="relative text-fontColor bg-BackgroundColor flex justify-between px-20 not-sm:px-8 py-4 items-center font-[Jockey One] z-[99] border-b-1 border-fontColor">
         <div className="text-3xl font-semibold tracking-wider">Edushpere</div>
 
         {loggedIn && <div onClick={() => {

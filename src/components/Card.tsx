@@ -32,7 +32,7 @@ export default function CardElement(props : iCard) {
         }
     }
 
-    return <div className="w-100 rounded-lg overflow-clip cursor-pointer duration-300 hover:scale-101">
+    return <div className="w-100 not-sm:w-full rounded-lg overflow-clip cursor-pointer duration-300 hover:scale-101">
         <div>
         {props.deleteOption && <div onClick={onclickHandler} className="bg-primary-200 absolute p-1 rounded m-2 float-end text-BackgroundColor ml-89">
             <DeleteIcon />

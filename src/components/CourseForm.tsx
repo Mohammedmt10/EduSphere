@@ -49,27 +49,27 @@ export default function CourseForm() {
         }
     }
 
-    return <div className="bg-BackgroundColor h-screen overflow-clip max-h-screen">
+    return <div className="bg-BackgroundColor min-h-screen not-lg:overflow-auto overflow-clip max-h-screen">
         <AdminNavBar />
-        <div className="flex h-full">
-        <form className="text-fontColor text-lg p-10 w-fit not-sm:w-fit not-sm:mx-auto border-r-2 h-full pr-60" onSubmit={createCourse}>
-            <div className="flex not-sm:block">
+        <div className=" h-screen w-full flex">
+        <form className="text-fontColor text-lg not-sm:px-4 p-10 w-fit not-sm:w-fit not-lg:border-0 border-r-2 h-full not-lg:pr-0 pr-60 not-sm:mx-auto" onSubmit={createCourse}>
+            <div className="not-sm:block">
                 <div className="py-2">Title :</div> 
-                    <input type="text" className="bg-BackgroundColor-200 outline-0 ml-18 rounded py-1.5 px-5 w-96 mb-2 font-normal not-sm:ml-0" name="title" placeholder="Name of the Course" />
+                    <input type="text" className="bg-BackgroundColor-200 outline-0 rounded py-1.5 px-5 w-96 mb-2 font-normal not-sm:ml-0 not-sm:w-78" name="title" placeholder="Name of the Course" />
             </div>
-            <div className="flex mb-2 not-sm:block">
+            <div className=" mb-2 not-sm:block">
                 <div className="py-2">
                     Description :
                 </div>
-                <textarea className="bg-BackgroundColor-200 outline-0 ml-4 rounded p-1 py-1.5 px-5 w-96 resize-none not-sm:ml-0" placeholder="Information about your course" name="desc" rows={5} />
+                <textarea className="bg-BackgroundColor-200 outline-0 rounded p-1 py-1.5 px-5 w-96 resize-none not-sm:w-78" placeholder="Information about your course" name="desc" rows={5} />
             </div>
-            <div className="flex not-sm:block">
+            <div className=" not-sm:block">
                 <div className="py-2">Price :</div>
-                    <input type="text" className="bg-BackgroundColor-200 outline-0 ml-16 rounded p-2 px-5 w-96 mb-2 not-sm:ml-0" name="price" placeholder="Price in Dollar" />
+                    <input type="text" className="bg-BackgroundColor-200 outline-0 rounded p-2 px-5 w-96 mb-2 not-sm:w-78" name="price" placeholder="Price in Dollar" />
                 </div>
-                <div className="flex not-md:block">
+                <div className=" not-md:block">
                     <div className="py-2">Image Url : </div>
-                    <input type="text" className="bg-BackgroundColor-200 outline-0 ml-7 rounded p-2 px-5 w-95 mb-4 not-md:ml-0" name="imgUrl" placeholder="Image which will be displayed on course" />
+                    <input type="text" className="bg-BackgroundColor-200 outline-0 rounded p-2 px-5 w-95 mb-4 not-md:w-78" name="imgUrl" placeholder="Image which will be displayed on course" />
                 </div>
                 {message && <div className="text-red-500 text-center mb-3">
                         {message}
@@ -80,9 +80,9 @@ export default function CourseForm() {
                 </button>
                 </div>
             </form>
-            <div className="text-fontColor px-8">
+            <div className="text-fontColor px-8 not-lg:hidden">
                 <div className="text-4xl py-8 tracking-tight">Create Your Course</div>
-                <div className="w-120 tracking-wider">
+                <div className="w-full tracking-wider">
                     You can create your course here. Fill all the fields all of them are required. The price is going to be in dollar. 
                 </div>
             </div>

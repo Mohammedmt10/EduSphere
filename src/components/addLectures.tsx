@@ -78,18 +78,18 @@ export default function AddLectures() {
                 </form>
             </div>}
         <AdminNavBar />
-        <div className="text-fontColor p-5 text-3xl font-medium tracking-tighter flex justify-between mx-16">
+        <div className="text-fontColor p-5 text-3xl font-medium tracking-tighter flex justify-between mx-16 not-sm:mx-4 not-sm:items-center not-sm:text-xl">
             Your Lectures :
             <div>
-                <button className="text-lg text-BackgroundColor font-normal cursor-pointer tracking-normal bg-primary-200 px-3 rounded-md flex items-center gap-1 py-1" onClick={()=>{
+                <button className="text-lg not-sm:px-1 text-BackgroundColor font-normal cursor-pointer tracking-normal bg-primary-200 px-3 rounded-md flex items-center gap-1 py-1" onClick={()=>{
                     setOpen(c => !c);
                 }}>
-                <PlusIcon />
-                Add Lecture
+                <div className=""><PlusIcon /></div>
+                <div className="not-sm:hidden">Add Lecture</div>
                 </button>
             </div>
         </div>
-        {lectures[0] && <div>
+        {lectures[0] && <div className="w-full">
             {lectures.map((lecture : Ilecture) => (
                 <LectureCard title={lecture.title} date={lecture.createdAt} lectureId={lecture._id} deleteOption={true} />
             ))}
