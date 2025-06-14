@@ -34,10 +34,10 @@ const AdminDashboard = () => {
   return (
     <div className="bg-BackgroundColor min-h-screen">
       <AdminNavBar />
-      <div className="text-white px-10 pt-10 w-fit">
-        <h2 className="text-4xl font-bold mb-8 font-display">My Courses</h2>
+      <div className="text-fontColor px-10 pt-10 w-full">
+        <h2 className="text-4xl not-sm:font-medium font-bold mb-8 font-display">My Courses</h2>
 
-        <div className="flex flex-wrap gap-8 mx-auto w-fit items-center">
+        <div className="flex flex-wrap gap-8 mx-auto w-full items-center">
           {courses && <div className=' flex flex-wrap gap-8 w-fit not-sm:flex-col'>
             {courses.map((course : ICourse) => (
             <div onClick={() => {

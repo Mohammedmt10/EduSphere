@@ -18,15 +18,15 @@ export default function AdminNavBar() {
             Authorization : localStorage.getItem('token')
           }
         });
-        if(response.data.message == 'no token provided') {
-          setLoggedIn(false);
-          setAdminDetails(false);
+        if(response.data.user) {
+          setUsername(response.data.user.username);
+          setLoggedIn(true);
           setTimeout(()=> {
             setLoading(false);
           }, 1000)
-          } else {
-            setUsername(response.data.user.username);
-            setLoggedIn(true);
+        } else {
+            setLoggedIn(false);
+            setAdminDetails(false);
             setTimeout(()=> {
               setLoading(false);
             }, 1000)
