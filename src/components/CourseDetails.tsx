@@ -26,6 +26,10 @@ export default function CourseDetails() {
             title : title,
             price : price,
             courseId : course._id
+        }, {
+            headers : {
+                Authorization : localStorage.getItem('token')
+            }
         });
 
         if(result.data.message) {
