@@ -28,7 +28,7 @@ export default function Courses() {
         <div className="text-4xl font-semibold text-fontColor text-center border-b-4 w-fit mx-auto pb-5 border-accent">
             Courses
         </div>
-        <div className="w-fit p-10 flex flex-wrap mx-auto gap-10 mb-10">
+        {courses[0] && <div className="w-fit p-10 flex flex-wrap mx-auto gap-10 mb-10">
             {courses.map((course : course) => (
                 <div className="mx-auto" onClick={()=>{
                     navigate(`/course/${course._id}`)
@@ -36,9 +36,6 @@ export default function Courses() {
                     <CardElement title={course.title} price={course.price} buttonText="Buy" imageUrl={course.imageUrl}  />
                 </div>
             ))}
-            {!courses[0] && <div className="text-fontColor">
-                    No courses uploaded yet
-                </div>}
-        </div>
+        </div>}
     </div>
 }

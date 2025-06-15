@@ -55,8 +55,8 @@ export default function CourseDetails() {
     useEffect(()=>{   
         courseDetails();
     },[]);
-    return <div className="bg-BackgroundColor min-h-screen flex not-md:block">
-        <div className="border-r-2 w-full pb-20 border-fontColor">
+    return <div className="bg-BackgroundColor min-h-screen flex not-lg:block">
+        <div className="border-r-2 w-full pb-20 border-fontColor not-lg:border-0">
             <img src={course.imageUrl} className="pt-20 px-30 not-md:px-12 w-4xl" />
             <div className=" px-30 not-md:px-12">
                 <h1 className="text-fontColor text-2xl font-bold tracking-wider py-10">Overview :</h1>

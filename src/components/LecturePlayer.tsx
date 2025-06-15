@@ -26,13 +26,13 @@ export default function LecturePlayer() {
   return (
     <div className="bg-BackgroundColor min-h-screen relative">
       <NavBar />
-      <div className="relative aspect-video mx-30 mt-10 rounded-2xl overflow-clip">
-        <iframe width="914" height="514" src={lecDetails.videoUrl} allowFullScreen></iframe>
-        <div className='text-fontColor text-3xl tracking-tight py-4 font-semibold'>
+      <div className="relative aspect-video mx-30 mt-10 not-lg:mx-4 h-auto w-auto rounded-2xl overflow-clip">
+        <iframe className="aspect-video w-4xl not-sm:w-full" src={lecDetails.videoUrl} allowFullScreen></iframe>
+        <div className='text-fontColor text-3xl not-lg:text-2xl tracking-tight py-4 font-semibold not-lg:font-medium'>
             {lecDetails.title}
         </div>
       </div>
-      <div className='text-fontColor bg-BackgroundColor-200 w-fit absolute right-8  bottom-8 px-4 pr-16 py-2 rounded-2xl'>
+      <div className='text-fontColor bg-BackgroundColor-200 w-fit absolute right-8  bottom-8 px-4 pr-16 py-2 rounded-2xl not-lg:w-fit not-lg:right-2 text-center not-lg:mx-4'>
         <div className='py-2'>Quik Links</div>
         <a className='flex items-center gap-1' href="https://github.com/Mohammedmt10"><Github /> github</a>
       </div>
