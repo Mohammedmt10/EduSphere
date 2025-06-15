@@ -13,28 +13,82 @@ export default function NavBar() {
     const [hover , setHover] = useState('');
     const navigate = useNavigate();
     const [open , setOpen] = useState(false);
+    const [loading , setLoading] = useState(true);
+
     const logoutCall = async () => {
         localStorage.removeItem('token')
         setloggedIn(false);
         setprofileOpen(false);
     }
     const userInfo = async () => {
-            const response = await axios.get('https://edusphere-backend-mww7.onrender.com/me',{
+        setLoading(true);
+        const response = await axios.get('https://edusphere-backend-mww7.onrender.com/me',{
             headers : {
                 Authorization : localStorage.getItem('token')
             }
-        })
+        });
     if(response.data.message == 'no token provided') {
         setloggedIn(false)
     } else {
         setUsername(response.data.user.username)
         setloggedIn(true)
     }
+    setTimeout(() => {
+        setLoading(false)
+    }, 1000);
     
     }
     useEffect(() => {
         userInfo();
     },[])
+    if(loading) return <div className="text-fontColor bg-BackgroundColor flex justify-between not-md:px-10 px-20 py-4 items-center font- z-[999] border-b-1 border-fontColor min-w-full">
+        <div className="text-3xl font-semibold tracking-wider">
+            Edusphere
+        </div>
+        <div className={`cursor-pointer md:hidden ${open ? "hidden": ""}`} onClick={()=> {
+            setOpen(c => !c);
+        }}>
+            <Menu />
+        </div>
+        <div className={`flex items-center md:flex  ${!open ? "hidden not-md:hidden": "not-md:absolute not-md:block not-md:mt-150 not-md:text-center not-md:py-8 rounded-2xl not-md:bg-BackgroundColor-100 not-md:px-14 z-[999] not-md:left-1/2 not-md:-translate-x-1/2 not-md:min-w-60"}`}>
+            <div className="top-5 right-5 absolute cursor-pointer md:hidden" onClick={()=>{
+                setOpen(c=> !c);
+            }}>
+                <CloseIcon />
+            </div>
+            <motion.div className="px-4 cursor-pointer not-md:my-3 not-md:w-fit not-md:mx-auto" onClick={() => {
+                navigate('/')
+            }} onHoverStart={()=> {
+                setHover('Home');
+            }} onHoverEnd={()=>{
+                setHover('');
+            }}>Home
+            <div className={`border-t-2 border-accent ${hover == 'Home' ? "w-full" : "w-0"} transition-all duration-200`}></div>
+            </motion.div>
+            <motion.div className="px-4 cursor-pointer not-md:my-3 not-md:w-fit not-md:mx-auto" onClick={() => {
+                navigate('/purchasedCourses')
+            }} onHoverStart={()=> {
+                setHover('Courses');
+            }} onHoverEnd={()=>{
+                setHover('');
+            }}>Courses
+            <div className={`border-t-2 border-accent ${hover == 'Courses' ? "w-full" : "w-0"} transition-all duration-200`}></div>
+            </motion.div>
+
+            <motion.div className="px-4 cursor-pointer not-md:my-3 not-md:w-fit not-md:mx-auto" onClick={() => {
+                navigate('/codeEditor')
+            }} onHoverStart={()=> {
+                setHover('Code Editor');
+            }} onHoverEnd={()=>{
+                setHover('');
+            }}>Code Editor
+            <div className={`border-t-2 border-accent ${hover == 'Code Editor' ? "w-full" : "w-0"} transition-all duration-200`}></div>
+            </motion.div>
+            
+            <div className="w-7 h-7 mb-1 animate-pulse bg-BackgroundColor-200 rounded-full"></div>
+            
+        </div>
+    </div>
     return <div className="text-fontColor bg-BackgroundColor flex justify-between not-md:px-10 px-20 py-4 items-center font- z-[999] border-b-1 border-fontColor min-w-full">
         <div className="text-3xl font-semibold tracking-wider">
             Edusphere
