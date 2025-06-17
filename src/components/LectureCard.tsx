@@ -23,10 +23,10 @@ export default function LectureCard(props : LectureCardIf) {
         })
         if(result.data.message == "course has been deleted") {
             alert("lecture has been deleted");
-            navigate('/adminDashboard')
         }
+        navigate('/adminDashboard')
     }
-    return <div className="bg-BackgroundColor-200 flex justify-between mx-20 mt-5 rounded-xl text-fontColor hover:cursor-pointer not-sm:mx-8 not-sm:px-4" onClick={() => {
+    return <div className="bg-BackgroundColor-200 flex justify-between mx-20 mt-5 rounded-xl text-fontColor hover:cursor-pointer not-sm:mx-8 not-sm:px-4 z-0 overflow-clip" onClick={() => {
         navigate(`/lecture/${props.lectureId}`)
     }}>
         <div className="flex items-center">
@@ -41,7 +41,7 @@ export default function LectureCard(props : LectureCardIf) {
             </div>
         </div>
 
-        {props.deleteOption && <div className="mx-8 my-8 not-sm:mx-2 not-sm:my-4 bg-primary-400 text-BackgroundColor p-1 rounded h-fit" onClick={deleteLecture}>
+        {props.deleteOption && <div className="mx-8 my-8 not-sm:mx-2 not-sm:my-4 bg-primary-400 text-BackgroundColor p-1 rounded h-fit z-[999]" onClick={deleteLecture}>
             <DeleteIcon />
         </div>}
     </div>

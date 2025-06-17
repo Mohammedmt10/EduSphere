@@ -47,7 +47,7 @@ export default function LogInPage() {
                     </div>
                     <div className="mt-3">
                         Password: <br />
-                        <input type="password" className="bg-BackgroundColor-200 text-black outline-none px-2 py-1 rounded mt-1" name="password" />
+                        <input type="password" className="bg-BackgroundColor-200 text-fontColor outline-none px-2 py-1 rounded mt-1" name="password" />
                     </div>
                     {success && <div className="text-accent font-normal text-base mt-2 text-center">
                         Incorrect credentails
