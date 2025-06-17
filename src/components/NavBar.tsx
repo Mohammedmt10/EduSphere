@@ -27,11 +27,11 @@ export default function NavBar() {
                 Authorization : localStorage.getItem('token')
             }
         });
-    if(response.data.message == 'no token provided') {
-        setloggedIn(false)
-    } else {
+    if(response.data.user) {
         setUsername(response.data.user.username)
         setloggedIn(true)
+    } else {
+        setloggedIn(false)
     }
     setTimeout(() => {
         setLoading(false)
